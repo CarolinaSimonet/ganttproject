@@ -50,7 +50,8 @@ public enum TaskDefaultColumn {
   COST(new ColumnList.ColumnStub("tpd12", null, false, -1, 20), Double.class, "tableColCost"),
   RESOURCES(new ColumnList.ColumnStub("tpd13", null, false, -1, 20), String.class, "resources", Functions.NOT_EDITABLE),
   COLOR(new ColumnList.ColumnStub("tpd14", null, false, -1, 20), Color.class, "option.taskDefaultColor.label"),
-  CONSTRAINT(new ColumnList.ColumnStub("tpd15", null, true, 3, 75), String.class, "tableColConstraint");
+  CONSTRAINT(new ColumnList.ColumnStub("tpd15", null, true, 3, 75), String.class, "tableColConstraint"),
+  CONSTRAINT_DATE(new ColumnList.ColumnStub("tpd16", null, true, 4, 75), GregorianCalendar.class, "tableColConstraintDate");
 
   public interface LocaleApi {
     String i18n(String key);
