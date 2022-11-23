@@ -64,6 +64,7 @@ public class PropertyFetcher {
     id2value.put(TaskDefaultColumn.OUTLINE_NUMBER.getStub().getID(), Joiner.on('.').join(outlinePath));
     id2value.put(TaskDefaultColumn.ID.getStub().getID(), String.valueOf(t.getTaskID()));
     id2value.put(TaskDefaultColumn.COST.getStub().getID(), t.getCost().getValue().toPlainString());
+    id2value.put(TaskDefaultColumn.CONSTRAINT.getStub().getID(), t.getName());
 
     CustomColumnsValues customValues = t.getCustomValues();
     for (CustomPropertyDefinition def : myProject.getTaskCustomColumnManager().getDefinitions()) {
