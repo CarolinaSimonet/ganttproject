@@ -52,6 +52,8 @@ import net.sourceforge.ganttproject.chart.overview.ToolbarBuilder;
 import net.sourceforge.ganttproject.document.Document;
 import net.sourceforge.ganttproject.document.Document.DocumentException;
 import net.sourceforge.ganttproject.document.DocumentCreator;
+// alterado
+import net.sourceforge.ganttproject.action.TestButton;
 import net.sourceforge.ganttproject.export.CommandLineExportApplication;
 import net.sourceforge.ganttproject.gui.NotificationManager;
 import net.sourceforge.ganttproject.gui.ProjectMRUMenu;
@@ -131,6 +133,9 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   private final EditMenu myEditMenu;
 
+  // alterado
+  private final TestButton testButton;
+
   private final ProjectMenu myProjectMenu;
 
   /**
@@ -192,6 +197,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     System.err.println("Creating main frame...");
     ToolTipManager.sharedInstance().setInitialDelay(200);
     ToolTipManager.sharedInstance().setDismissDelay(60000);
+    // alterado
+    testButton = new TestButton(getUIFacade());
 
     myCalendar.addListener(new GPCalendarListener() {
       @Override
@@ -678,7 +685,10 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
         .addButton(new TestGanttRolloverButton(getPasteAction().asToolbarAction()))
         .addWhitespace()
         .addButton(new TestGanttRolloverButton(myEditMenu.getUndoAction().asToolbarAction()))
-        .addButton(new TestGanttRolloverButton(myEditMenu.getRedoAction().asToolbarAction()));
+        .addButton(new TestGanttRolloverButton(myEditMenu.getRedoAction().asToolbarAction()))
+        // alterado a partir daqui
+        .addWhitespace()
+        .addButton(testButton);
 
     JTextField searchBox = getSearchUi().getSearchField();
     //searchBox.setMaximumSize(new Dimension(searchBox.getPreferredSize().width, buttons.get(0).getPreferredSize().height));

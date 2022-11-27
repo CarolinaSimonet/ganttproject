@@ -61,6 +61,8 @@ public class UIConfiguration {
 
   private boolean isCriticalPathOn;
 
+  private boolean isDailyInfoOn;
+
   private final AlphaRenderingOption myWeekendAlphaRenderingOption;
   private final RedlineOption myRedlineOption = new RedlineOption();
   private BooleanOption myProjectDatesOption = new DefaultBooleanOption("showProjectDates");
@@ -172,6 +174,14 @@ public class UIConfiguration {
 
   public void setCriticalPathOn(boolean isOn) {
     this.isCriticalPathOn = isOn;
+  }
+
+  public boolean isDailyInfoOn() {
+    return isDailyInfoOn;
+  }
+
+  public void setDailyInfoOn(boolean isOn) {
+    this.isDailyInfoOn = isOn;
   }
 
   public AlphaRenderingOption getWeekendAlphaRenderingOption() {
