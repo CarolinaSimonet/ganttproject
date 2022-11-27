@@ -13,10 +13,11 @@
     
     Margarida Carvalho: continuação do botão; em src/net/sourceforge/ganttproject/GanttProject.java há uma secção builder.addButton e acho que é aí que 
     temos de adicionar o botão; fiz isso e criei uma classe nova em src/net/sourceforge/ganttproject/action/edit chamada DailyInfoAction.java, mas não 
-    consegui dar build
+    consegui dar build.
 
 27/11:
-
+    Filipe Santo, Margarida Carvalho, Carolina Simonet: fizemos o testButton, percebemos melhor a criação de um dialog, insert de butões, etc.
+    
 28/11:
 
 29/11:
