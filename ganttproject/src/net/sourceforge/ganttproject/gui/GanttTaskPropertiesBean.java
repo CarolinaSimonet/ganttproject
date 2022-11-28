@@ -70,6 +70,10 @@ public class GanttTaskPropertiesBean extends JPanel {
   };
   private JXDatePicker myEarliestBeginDatePicker;
 
+  //restricao
+  private JXDatePicker myConstraintDatePicker;
+  //
+
   private GanttTask[] selectedTasks;
 
   private static final GanttLanguage language = GanttLanguage.getInstance();
@@ -188,10 +192,18 @@ public class GanttTaskPropertiesBean extends JPanel {
       propertiesPanel.add(checkBox.second());
     }
     addEmptyRow(propertiesPanel);
+    
 
     myTaskScheduleDates.insertInto(propertiesPanel);
 
     constructEarliestBegin(propertiesPanel);
+
+    addEmptyRow(propertiesPanel);
+
+    /*---------add constraint date here---------*/
+    constructConstraintDate(propertiesPanel);
+    /*------------------------------------------*/
+    
     addEmptyRow(propertiesPanel);
 
     propertiesPanel.add(new JLabel(language.getText("priority")));
@@ -262,6 +274,16 @@ public class GanttTaskPropertiesBean extends JPanel {
     generalPanel.add(notesPanel);
     SpringUtilities.makeCompactGrid(generalPanel, 1, 2, 1, 1, 10, 5);
   }
+
+  private void constructConstraintDate(Container propertiesPanel) {
+    myConstraintDatePicker = UIUtil.createDatePicker();
+    Box valueBox = Box.createHorizontalBox();
+    valueBox.add(myConstraintDatePicker);
+    valueBox.add(Box.createHorizontalStrut(5));
+    propertiesPanel.add(new JLabel(language.getText("tableColConstraintDate")));
+    propertiesPanel.add(valueBox);
+  }
+
 
   private void constructEarliestBegin(Container propertiesPanel) {
     final JXHyperlink copyFromBeginDate = new JXHyperlink(new GPAction("option.taskProperties.main.earliestBegin.copyBeginDate") {
