@@ -20,7 +20,7 @@ public class TestButton extends GPAction {
 
 
     public TestButton(UIFacade uifacade) {
-        super("task.properties", IconSize.MENU);
+        super("task.dailyInfo", IconSize.MENU);
         myUiFacade = uifacade;
     }
 
@@ -37,7 +37,7 @@ public class TestButton extends GPAction {
             }
         };
 
-        myUiFacade.createDialog(createDialogComponent(), new Action[] { okAction }, "").show();
+        myUiFacade.createDialog(createDialogComponent(), new Action[] { okAction }, "Daily Information").show();
     }
 
 

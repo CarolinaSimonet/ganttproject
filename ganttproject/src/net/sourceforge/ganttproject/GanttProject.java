@@ -688,7 +688,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
         .addButton(new TestGanttRolloverButton(myEditMenu.getRedoAction().asToolbarAction()))
         // alterado a partir daqui
         .addWhitespace()
-        .addButton(testButton);
+        .addButton(testButton);   // adicionar classe test button
 
     JTextField searchBox = getSearchUi().getSearchField();
     //searchBox.setMaximumSize(new Dimension(searchBox.getPreferredSize().width, buttons.get(0).getPreferredSize().height));
