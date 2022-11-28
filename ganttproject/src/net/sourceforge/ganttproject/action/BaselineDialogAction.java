@@ -18,24 +18,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package net.sourceforge.ganttproject.action;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.*;
-
 import net.sourceforge.ganttproject.GanttPreviousState;
 import net.sourceforge.ganttproject.IGanttProject;
-import net.sourceforge.ganttproject.action.CancelAction;
-import net.sourceforge.ganttproject.action.GPAction;
-import net.sourceforge.ganttproject.action.OkAction;
 import net.sourceforge.ganttproject.gui.AbstractTableAndActionsComponent;
 import net.sourceforge.ganttproject.gui.EditableList;
 import net.sourceforge.ganttproject.gui.UIFacade;
 import net.sourceforge.ganttproject.gui.options.OptionsPageBuilder;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BaselineDialogAction extends GPAction {
   private final IGanttProject myProject;
@@ -141,7 +137,9 @@ public class BaselineDialogAction extends GPAction {
     OptionsPageBuilder optionsBuilder = new OptionsPageBuilder();
     optionsBuilder.setUiFacade(myUiFacade);
     JPanel contentPanel = new JPanel(new BorderLayout());
+    //mexe na parte de cima das baselines
     contentPanel.add(list.createDefaultComponent(), BorderLayout.CENTER);
+    //mexe na parte de baixo
     contentPanel.add(optionsBuilder.createGroupComponent(myUiFacade.getGanttChart().getBaselineColorOptions()), BorderLayout.SOUTH);
     myUiFacade.createDialog(contentPanel, actions, getI18n("baseline.dialog.title")).show();
   }

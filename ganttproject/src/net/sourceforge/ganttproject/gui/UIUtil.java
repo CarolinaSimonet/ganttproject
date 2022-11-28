@@ -23,12 +23,8 @@ import biz.ganttproject.core.option.GPOption;
 import biz.ganttproject.core.option.ValidationException;
 import biz.ganttproject.core.time.CalendarFactory;
 import biz.ganttproject.core.time.GanttCalendar;
-import com.google.common.base.Function;
 import com.google.common.base.Objects;
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Strings;
-import com.google.common.base.Supplier;
+import com.google.common.base.*;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import javafx.embed.swing.JFXPanel;
@@ -42,11 +38,7 @@ import net.sourceforge.ganttproject.util.PropertiesUtil;
 import net.sourceforge.ganttproject.util.collect.Pair;
 import org.jdesktop.swingx.JXDatePicker;
 import org.jdesktop.swingx.JXTable;
-import org.jdesktop.swingx.decorator.ColorHighlighter;
-import org.jdesktop.swingx.decorator.ComponentAdapter;
-import org.jdesktop.swingx.decorator.HighlightPredicate;
-import org.jdesktop.swingx.decorator.Highlighter;
-import org.jdesktop.swingx.decorator.HighlighterFactory;
+import org.jdesktop.swingx.decorator.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -70,11 +62,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public abstract class UIUtil {
   public static final Highlighter ZEBRA_HIGHLIGHTER = new ColorHighlighter(new HighlightPredicate() {
@@ -224,7 +213,7 @@ public abstract class UIUtil {
   }
 
 
-  public static interface DateValidator extends Function<Date, Pair<Boolean, String>> {
+    public static interface DateValidator extends Function<Date, Pair<Boolean, String>> {
     class Default {
       public static DateValidator aroundProjectStart(final Date projectStart) {
         return dateInRange(projectStart, 1000);

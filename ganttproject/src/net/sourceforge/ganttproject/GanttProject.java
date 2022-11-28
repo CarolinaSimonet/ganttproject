@@ -198,7 +198,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     ToolTipManager.sharedInstance().setInitialDelay(200);
     ToolTipManager.sharedInstance().setDismissDelay(60000);
     // alterado
-    testButton = new TestButton(getUIFacade());
+    testButton = new TestButton(getProject(), getUIFacade());
 
     myCalendar.addListener(new GPCalendarListener() {
       @Override
