@@ -18,6 +18,10 @@
     
 28/11:
     Jaime Russo: Inserção de uma linha para definir a data de restrição, através do calendário, nas propriedades da tarefa.
+    
+    Carolina Simonet e Margarida Carvalho: update do diálogo do novo botão, baseado na classe BaseLineDialogAction, falta completar o contentPanel.add 
+    na classe testButton
+    
 29/11:
 
 30/11:
