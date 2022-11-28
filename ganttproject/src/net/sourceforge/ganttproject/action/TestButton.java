@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 /**
  * Collection of actions from Help menu.
  *
- * @author dbarashev (Dmitry Barashev)
+ * @author Carolina Simonet, Margarida Carvalho
  */
 public class TestButton extends GPAction {
     private final UIFacade myUiFacade;
