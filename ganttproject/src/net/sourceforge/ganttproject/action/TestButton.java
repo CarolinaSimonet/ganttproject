@@ -37,7 +37,7 @@ public class TestButton extends GPAction {
             }
         };
 
-        myUiFacade.createDialog(createDialogComponent(), new Action[] { okAction }, "Daily Information").show();
+        myUiFacade.createDialog(createDialogComponent(), new Action[] { okAction }, "").show();
     }
 
 
@@ -52,7 +52,7 @@ public class TestButton extends GPAction {
     private Component createDialogComponent() {
         OptionsPageBuilder builder = new OptionsPageBuilder();
         builder.setUiFacade(myUiFacade);
-        JComponent comp = builder.buildPage(myUiFacade.getOptions(), "ganttChart");
+        JComponent comp = builder.buildPage(myUiFacade.getOptions(), "dailyInformation");
         comp.setBorder(new EmptyBorder(5, 5, 5, 5));
         return comp;
     }
