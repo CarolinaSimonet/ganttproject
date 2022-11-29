@@ -17,7 +17,8 @@
     Filipe Santo, Margarida Carvalho, Carolina Simonet: fizemos o testButton, percebemos melhor a criação de um dialog, insert de butões, etc.
     
 28/11:
-    Jaime Russo: Inserção de uma linha para definir a data de restrição, através do calendário, nas propriedades da tarefa.
+    Jaime Russo: Inserção de uma linha para definir a data de restrição, através do calendário, nas propriedades da tarefa. Tentar perceber como é que se podem
+    guardar os valores da data para ser mostrada na colua "Data de Restrição" no painel principal do Gantt
     
     Carolina Simonet e Margarida Carvalho: update do diálogo do novo botão, baseado na classe BaseLineDialogAction, falta completar o contentPanel.add 
     na classe testButton
