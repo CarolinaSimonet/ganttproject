@@ -58,6 +58,7 @@ public interface TaskManager {
     Task myParent;
     boolean isLegacyMilestone;
     Date myEndDate;
+    Date myConstraintDate;    //added
     String myNotes;
     String myWebLink;
     Integer myCompletion;
@@ -131,6 +132,7 @@ public interface TaskManager {
 
     public TaskBuilder withStartDate(Date startDate) {
       myStartDate = startDate;
+      myConstraintDate = startDate;   //added
       return this;
     }
 

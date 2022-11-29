@@ -36,6 +36,10 @@ import net.sourceforge.ganttproject.task.CustomColumnsValues;
 import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskProperties;
 
+
+/**
+ * Esta classe não aparenta colocar valores na coluna
+ */
 public class PropertyFetcher {
   private static final GanttLanguage language = GanttLanguage.getInstance();
   private final IGanttProject myProject;
@@ -52,6 +56,7 @@ public class PropertyFetcher {
     id2value.put(TaskDefaultColumn.PRIORITY.getStub().getID(), i18n(t.getPriority().getI18nKey()));
 
     DateFormat dateFormat = language.getShortDateFormat();
+
     id2value.put(TaskDefaultColumn.NAME.getStub().getID(), t.getName());
     id2value.put(TaskDefaultColumn.BEGIN_DATE.getStub().getID(), dateFormat.format(t.getStart().getTime()));
     id2value.put(TaskDefaultColumn.END_DATE.getStub().getID(), dateFormat.format(t.getDisplayEnd().getTime()));

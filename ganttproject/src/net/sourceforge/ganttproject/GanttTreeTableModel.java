@@ -283,6 +283,12 @@ public class GanttTreeTableModel extends DefaultTreeTableModel implements TableC
       case END_DATE:
         res = t.getDisplayEnd();
         break;
+      case CONSTRAINT:    //added
+        //res = tn.getConstraint();
+        break;
+      case CONSTRAINT_DATE:   //added
+        //res = tn.getConstraintDate();
+        break;
       case DURATION:
         res = new Integer(tn.getDuration());
         break;
@@ -384,6 +390,10 @@ public class GanttTreeTableModel extends DefaultTreeTableModel implements TableC
       ((TaskNode) node).setStart((GanttCalendar) value);
       ((TaskNode) node).applyThirdDateConstraint();
       break;
+    //case CONSTRAINT_DATE:   //added
+    //  ((TaskNode) node).setStart((GanttCalendar) value);
+    //  ((TaskNode) node).applyThirdDateConstraint();
+    //  break;
     case END_DATE:
       ((TaskNode) node).setEnd(CalendarFactory.createGanttCalendar(
           GPTimeUnitStack.DAY.adjustRight(((GanttCalendar)value).getTime())));

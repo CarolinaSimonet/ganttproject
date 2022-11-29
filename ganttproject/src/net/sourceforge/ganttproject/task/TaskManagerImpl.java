@@ -339,6 +339,9 @@ public class TaskManagerImpl implements TaskManager {
     return (GanttTask) newTaskBuilder().withId(id).build();
   }
 
+  /**
+   * Aqui define-se os valores iniciais das propriedades da tarefa
+   */
   @Override
   public TaskBuilder newTaskBuilder() {
     return new TaskBuilder() {
