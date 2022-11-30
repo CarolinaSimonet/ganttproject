@@ -35,6 +35,8 @@ public interface MutableTask {
 
   void setPriority(Task.Priority priority);
 
+  void setConstraint(Task.Constraint constraints);
+
   void setConstraintDate(GanttCalendar constraintDate);   //added
 
   void setStart(GanttCalendar start);

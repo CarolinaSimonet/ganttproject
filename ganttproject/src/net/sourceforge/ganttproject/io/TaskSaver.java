@@ -88,6 +88,9 @@ class TaskSaver extends SaverBase {
     if (task.getPriority() != Task.DEFAULT_PRIORITY) {
       addAttribute("priority", task.getPriority().getPersistentValue(), attrs);
     }
+    if (task.getConstraint() != Task.DEFAULT_CONSTRAINT) {                                          //ADDED
+      addAttribute("tableColConstraint", task.getConstraint().getPersistentValue(), attrs);
+    }
     final String sWebLink = task.getWebLink();
     if (sWebLink != null && !sWebLink.equals("") && !sWebLink.equals("http://")) {
       addAttribute("webLink", URLEncoder.encode(sWebLink, Charsets.UTF_8.name()), attrs);

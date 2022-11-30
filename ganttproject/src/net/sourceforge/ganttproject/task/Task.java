@@ -91,34 +91,30 @@ public interface Task extends MutableTask {
   /**
    * Available task constraints //added
    */
-  public enum Constraints {
+  public enum Constraint {
     //list constraints here
-    TEST(), TEST1(), TEST2();
+    MSO("0"), MFO("1"), SNET("2"),
+    SNLT("3"), FNET("4"), FNLT("5");
 
-    /*private final String myPersistentValue;
-
-    private Priority(String persistentValue) {
-      myPersistentValue = persistentValue;
-    }
-
-    *
-     * @return the Priority value for the given integer value, or
-     *         DEFAULT_PRIORITY if unknown
-
-    public static Priority getPriority(int value) {
-      for (Task.Priority p : Task.Priority.values()) {
-        if (p.ordinal() == value) {
-          return p;
-        }
-      }
-      return DEFAULT_PRIORITY;
-    }
+    private final String myPersistentValue;
 
     public String getPersistentValue() {
       return myPersistentValue;
     }
 
-    * @return the priority as a lower-case String*/
+    private Constraint(String persistentValue) {
+      myPersistentValue = persistentValue;
+    }
+
+    public static Constraint getConstraint(int value) {
+      for (Task.Constraint c : Task.Constraint.values()) {
+        if (c.ordinal() == value) {
+          return c;
+        }
+      }
+      return DEFAULT_CONSTRAINT;
+    }
+
     public String getLowerString() {
       return this.toString().toLowerCase();
     }
@@ -127,26 +123,12 @@ public interface Task extends MutableTask {
     public String getI18nKey() {
       return "constraint." + getLowerString();
     }
-
-    /**
-     * @return the path to the icon representing the priority
-
-    public String getIconPath() {
-      return "/icons/task_" + getLowerString() + ".gif";
-    }
-
-    public static Priority fromPersistentValue(String priority) {
-      for (Priority p : values()) {
-        if (p.getPersistentValue().equals(priority)) {
-          return p;
-        }
-      }
-      return Priority.NORMAL;
-    }*/
   }
 
   /** Default priority (for new tasks) */
   public static final Priority DEFAULT_PRIORITY = Priority.NORMAL;
+
+  public static final Constraint DEFAULT_CONSTRAINT = Constraint.MSO;
 
   public static interface Cost {
     BigDecimal getValue();
@@ -157,6 +139,8 @@ public interface Task extends MutableTask {
     boolean isCalculated();
     void setCalculated(boolean calculated);
   }
+
+  Constraint getConstraint();   //added
 
   Cost getCost();
 

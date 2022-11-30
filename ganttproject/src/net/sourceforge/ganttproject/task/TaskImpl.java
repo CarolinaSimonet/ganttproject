@@ -84,6 +84,8 @@ public class TaskImpl implements Task {
 
   private Priority myPriority;
 
+  private Constraint myConstraint;  //added
+
   private GanttCalendar myStart;
 
   private GanttCalendar myEnd;
@@ -151,6 +153,7 @@ public class TaskImpl implements Task {
     myDependencySliceAsDependant = new TaskDependencySliceAsDependant(this, myManager.getDependencyCollection());
     myDependencySliceAsDependee = new TaskDependencySliceAsDependee(this, myManager.getDependencyCollection());
     myPriority = DEFAULT_PRIORITY;
+    myConstraint = DEFAULT_CONSTRAINT;
     myTaskHierarchyItem = myManager.getHierarchyManager().createItem(this);
     myNotes = "";
     bExpand = true;
@@ -177,6 +180,7 @@ public class TaskImpl implements Task {
     isMilestone = copy.isMilestone;
     isProjectTask = copy.isProjectTask;
     myPriority = copy.myPriority;
+    myConstraint = copy.myConstraint;
     myStart = copy.myStart;
     myEnd = copy.myEnd;
     myThird = copy.myThird;
@@ -733,6 +737,16 @@ public class TaskImpl implements Task {
     }
 
     @Override
+    public void setConstraint(final Constraint constraintType) {                   //ADDED
+      myCommands.add(new Runnable() {
+        @Override
+        public void run() {
+          TaskImpl.this.setConstraint(constraintType);
+        }
+      });
+    }
+
+    @Override
     public void setConstraintDate(final GanttCalendar constraintDate) {   //added
       myCommands.add(new Runnable() {
         @Override
@@ -953,6 +967,10 @@ public class TaskImpl implements Task {
     public void setTaskInfo(TaskInfo taskInfo) {
       myTaskInfo = taskInfo;
     }
+  }
+
+  public void setConstraint(Constraint constraintType){             //ADDED
+    myConstraint = constraintType;
   }
 
   @Override
@@ -1298,6 +1316,11 @@ public class TaskImpl implements Task {
     public void setCalculated(boolean calculated) {
       isCalculated = calculated;
     }
+  }
+
+  @Override
+  public Constraint getConstraint() {
+    return myConstraint;
   }
 
   @Override

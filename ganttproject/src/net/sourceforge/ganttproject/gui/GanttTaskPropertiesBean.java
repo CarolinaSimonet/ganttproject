@@ -149,6 +149,8 @@ public class GanttTaskPropertiesBean extends JPanel {
 
   private Task.Priority originalPriority;
 
+  private Task.Constraint originalConstraint;
+
   private ShapePaint originalShape;
 
   private final TaskScheduleDatesPanel myTaskScheduleDates;
@@ -291,8 +293,7 @@ public class GanttTaskPropertiesBean extends JPanel {
     propertiesPanel.add(new JLabel(language.getText("tableColConstraint")));
     constraintComboBox = new JComboBox();
 
-    //this is the one that should be used
-    for (Task.Constraints c : Task.Constraints.values()) {
+    for (Task.Constraint c : Task.Constraint.values()) {
       constraintComboBox.addItem(language.getText(c.getI18nKey()));
     }
 
@@ -461,6 +462,10 @@ public class GanttTaskPropertiesBean extends JPanel {
 
       mutator.setConstraintDate(myConstraintDate);   //added
 
+      if (this.originalConstraint != getConstraint()) {          //ADDED
+        mutator.setConstraint(getConstraint());
+      }
+
       if (getLength() > 0) {
         mutator.setDuration(selectedTasks[i].getManager().createLength(getLength()));
       }
@@ -511,6 +516,8 @@ public class GanttTaskPropertiesBean extends JPanel {
     setName(selectedTasks[0].toString());
 
     setupConstraintDate();  //added
+
+    constraintComboBox.setSelectedIndex(originalConstraint.ordinal());
 
     percentCompleteSlider.setValue(new Integer(originalCompletionPercentage));
     priorityComboBox.setSelectedIndex(originalPriority.ordinal());
@@ -565,6 +572,7 @@ public class GanttTaskPropertiesBean extends JPanel {
   }
 
 
+  private Task.Constraint getConstraint() { return Task.Constraint.getConstraint(constraintComboBox.getSelectedIndex()); }
 
   private boolean isProjectTask() {
     return projectTaskCheckBox1.isSelected();
@@ -630,6 +638,7 @@ public class GanttTaskPropertiesBean extends JPanel {
     originalNotes = task.getNotes();
     originalCompletionPercentage = task.getCompletionPercentage();
     originalPriority = task.getPriority();
+    originalConstraint = task.getConstraint();          //ADDED
     originalShape = task.getShape();
     originalEarliestBeginDate = task.getThird();
     originalEarliestBeginEnabled = task.getThirdDateConstraint();

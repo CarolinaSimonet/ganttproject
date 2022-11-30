@@ -87,6 +87,7 @@ public class TaskNode extends DefaultMutableTreeTableNode {
     return task.getConstraintDate();
   } //added
 
+  public Task.Constraint getConstraint() { return task.getConstraint();} //added
   /**
    * Sets the end date of the task.
    * 

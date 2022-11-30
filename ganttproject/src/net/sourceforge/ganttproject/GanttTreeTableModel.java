@@ -284,7 +284,7 @@ public class GanttTreeTableModel extends DefaultTreeTableModel implements TableC
         res = t.getDisplayEnd();
         break;
       case CONSTRAINT:    //added
-        //res = tn.getConstraint();
+        res = language.getText(tn.getConstraint().getI18nKey());
         break;
       case CONSTRAINT_DATE:   //added
         res = tn.getConstraintDate();
