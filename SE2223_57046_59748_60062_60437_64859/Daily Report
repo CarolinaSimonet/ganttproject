@@ -28,6 +28,8 @@
 29/11:
     Jaime Russo, Rui Capareira: -Adicionar linha com a seleção da "Restrição" em modo dropbox nas propriedades de uma tarefa;
                                 -Fixação da data da restrição na célula da coluna "Data de Restrição".
+                                
+    Margarida Carvalho, Carolina Simonet, Filipe Santo: update do diálogo do botão; criação do MyTestComponent                            
 
 30/11:
 
