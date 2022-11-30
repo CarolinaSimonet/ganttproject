@@ -94,7 +94,7 @@ public interface Task extends MutableTask {
   public enum Constraint {
     //list constraints here
     MSO("0"), MFO("1"), SNET("2"),
-    SNLT("3"), FNET("4"), FNLT("5");
+    SNLT("3"), FNET("4"), FNLT("5"), EMPTY("");
 
     private final String myPersistentValue;
 
@@ -128,7 +128,7 @@ public interface Task extends MutableTask {
   /** Default priority (for new tasks) */
   public static final Priority DEFAULT_PRIORITY = Priority.NORMAL;
 
-  public static final Constraint DEFAULT_CONSTRAINT = Constraint.MSO;
+  public static final Constraint DEFAULT_CONSTRAINT = Constraint.EMPTY;
 
   public static interface Cost {
     BigDecimal getValue();
