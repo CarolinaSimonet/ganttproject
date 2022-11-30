@@ -57,6 +57,15 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 /**
+ *
+ * NOTA:
+ * Fazer a implementação de modo a que a data fique gravada na caixa da data de restrição
+ *
+ *
+ *
+ */
+
+/**
  * Real panel for editing task properties
  */
 public class GanttTaskPropertiesBean extends JPanel {
@@ -70,8 +79,10 @@ public class GanttTaskPropertiesBean extends JPanel {
   };
   private JXDatePicker myEarliestBeginDatePicker;
 
-  //restricao
+  //restricao //added
   private JXDatePicker myConstraintDatePicker;
+  private GanttCalendar myConstraintDate;
+  private JComboBox constraintComboBox;
   //
 
   private GanttTask[] selectedTasks;
@@ -200,9 +211,8 @@ public class GanttTaskPropertiesBean extends JPanel {
 
     addEmptyRow(propertiesPanel);
 
-    /*---------add constraint date here---------*/
-    constructConstraintDate(propertiesPanel);
-    /*------------------------------------------*/
+    //constraint
+    constructConstraint(propertiesPanel);
     
     addEmptyRow(propertiesPanel);
 
@@ -275,7 +285,22 @@ public class GanttTaskPropertiesBean extends JPanel {
     SpringUtilities.makeCompactGrid(generalPanel, 1, 2, 1, 1, 10, 5);
   }
 
-  private void constructConstraintDate(Container propertiesPanel) {
+  private void constructConstraint(Container propertiesPanel) {   //added
+
+    /*-----------------------------------alterar-----------------------------*/
+    propertiesPanel.add(new JLabel(language.getText("tableColConstraint")));
+    constraintComboBox = new JComboBox();
+
+    //this is the one that should be used
+    for (Task.Constraints c : Task.Constraints.values()) {
+      constraintComboBox.addItem(language.getText(c.getI18nKey()));
+    }
+
+    constraintComboBox.setEditable(false);
+    propertiesPanel.add(constraintComboBox);
+    /*-----------------------------------------------------------------------*/
+
+
     myConstraintDatePicker = UIUtil.createDatePicker();
     Box valueBox = Box.createHorizontalBox();
     valueBox.add(myConstraintDatePicker);
@@ -434,6 +459,8 @@ public class GanttTaskPropertiesBean extends JPanel {
         mutator.setThird(getThird(), getThirdDateConstraint());
       }
 
+      mutator.setConstraintDate(myConstraintDate);   //added
+
       if (getLength() > 0) {
         mutator.setDuration(selectedTasks[i].getManager().createLength(getLength()));
       }
@@ -466,11 +493,24 @@ public class GanttTaskPropertiesBean extends JPanel {
     }
   }
 
+  private void setupConstraintDate() {  //added
+    DateValidator validator = UIUtil.DateValidator.Default.aroundProjectStart(myProject.getTaskManager().getProjectStart());
+    ActionListener listener = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        setConstraintDate(CalendarFactory.createGanttCalendar(((JXDatePicker) e.getSource()).getDate()));
+      }
+    };
+    UIUtil.setupDatePicker(myConstraintDatePicker, myConstraintDate == null ? null : myConstraintDate.getTime(), validator, listener);
+  }
+
   private void setSelectedTaskProperties() {
     myUnpluggedClone = selectedTasks[0].unpluggedClone();
     nameField1.setText(originalName);
 
     setName(selectedTasks[0].toString());
+
+    setupConstraintDate();  //added
 
     percentCompleteSlider.setValue(new Integer(originalCompletionPercentage));
     priorityComboBox.setSelectedIndex(originalPriority.ordinal());
@@ -572,7 +612,9 @@ public class GanttTaskPropertiesBean extends JPanel {
     return myThird;
   }
 
-
+  private void setConstraintDate(GanttCalendar constraintDate) {
+    myConstraintDate = constraintDate;
+  }
 
   private void setThird(GanttCalendar third) {
     myThird = third;

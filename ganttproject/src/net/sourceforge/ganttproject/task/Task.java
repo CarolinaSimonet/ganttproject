@@ -88,6 +88,63 @@ public interface Task extends MutableTask {
     }
   }
 
+  /**
+   * Available task constraints //added
+   */
+  public enum Constraints {
+    //list constraints here
+    TEST(), TEST1(), TEST2();
+
+    /*private final String myPersistentValue;
+
+    private Priority(String persistentValue) {
+      myPersistentValue = persistentValue;
+    }
+
+    *
+     * @return the Priority value for the given integer value, or
+     *         DEFAULT_PRIORITY if unknown
+
+    public static Priority getPriority(int value) {
+      for (Task.Priority p : Task.Priority.values()) {
+        if (p.ordinal() == value) {
+          return p;
+        }
+      }
+      return DEFAULT_PRIORITY;
+    }
+
+    public String getPersistentValue() {
+      return myPersistentValue;
+    }
+
+    * @return the priority as a lower-case String*/
+    public String getLowerString() {
+      return this.toString().toLowerCase();
+    }
+
+    //* @return the key to get the I18n value for the priority
+    public String getI18nKey() {
+      return "constraint." + getLowerString();
+    }
+
+    /**
+     * @return the path to the icon representing the priority
+
+    public String getIconPath() {
+      return "/icons/task_" + getLowerString() + ".gif";
+    }
+
+    public static Priority fromPersistentValue(String priority) {
+      for (Priority p : values()) {
+        if (p.getPersistentValue().equals(priority)) {
+          return p;
+        }
+      }
+      return Priority.NORMAL;
+    }*/
+  }
+
   /** Default priority (for new tasks) */
   public static final Priority DEFAULT_PRIORITY = Priority.NORMAL;
 
@@ -119,6 +176,8 @@ public interface Task extends MutableTask {
   List<TaskActivity> getActivities();
 
   GanttCalendar getStart();
+
+  GanttCalendar getConstraintDate();  //added
 
   GanttCalendar getDisplayEnd();
   GanttCalendar getEnd();

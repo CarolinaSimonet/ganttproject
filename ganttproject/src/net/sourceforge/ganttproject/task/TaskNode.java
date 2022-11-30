@@ -83,6 +83,10 @@ public class TaskNode extends DefaultMutableTreeTableNode {
     return task.getStart();
   }
 
+  public GanttCalendar getConstraintDate() {
+    return task.getConstraintDate();
+  } //added
+
   /**
    * Sets the end date of the task.
    * 
@@ -92,6 +96,12 @@ public class TaskNode extends DefaultMutableTreeTableNode {
   public void setEnd(GanttCalendar endDate) {
     TaskMutator mutator = task.createMutator();
     mutator.setEnd(endDate);
+    mutator.commit();
+  }
+
+  public void setConstraintDate(GanttCalendar constraintDate) {   //added
+    TaskMutator mutator = task.createMutator();
+    mutator.setConstraintDate(constraintDate);
     mutator.commit();
   }
 

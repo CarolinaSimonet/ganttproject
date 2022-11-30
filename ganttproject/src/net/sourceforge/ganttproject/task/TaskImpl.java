@@ -88,6 +88,8 @@ public class TaskImpl implements Task {
 
   private GanttCalendar myEnd;
 
+  private GanttCalendar myConstraintDate;   //added
+
   private GanttCalendar myThird;
 
   private int myThirdDateConstraint;
@@ -352,6 +354,11 @@ public class TaskImpl implements Task {
       return myMutator.getStart();
     }
     return myStart;
+  }
+
+  @Override
+  public GanttCalendar getConstraintDate() {    //added
+    return myConstraintDate;
   }
 
   @Override
@@ -726,6 +733,16 @@ public class TaskImpl implements Task {
     }
 
     @Override
+    public void setConstraintDate(final GanttCalendar constraintDate) {   //added
+      myCommands.add(new Runnable() {
+        @Override
+        public void run() {
+          TaskImpl.this.setConstraintDate(constraintDate);
+        }
+      });
+    }
+
+    @Override
     public void setStart(final GanttCalendar start) {
       assert start != null;
       GanttCalendar currentStart = getStart();
@@ -959,6 +976,11 @@ public class TaskImpl implements Task {
   @Override
   public void setPriority(Priority priority) {
     myPriority = priority;
+  }
+
+  @Override
+  public void setConstraintDate(GanttCalendar constraintDate) {   //added
+    myConstraintDate = constraintDate;
   }
 
   @Override
