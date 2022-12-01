@@ -34,6 +34,7 @@
 30/11:
     Jaime Russo, Rui Capareira: -Adicionamos o enum que contêm todas as restrições possiveis, chamamos o enum na dropbox "Restrição" nas propriedades
                 -Fixar o valor da restrição na célula da trabela, coluna "Restrição" do painel esquerdo principal
+    Todos: Botão "Daily information" a funcionar corretamente, i.e., conteúdo a aparecer, quando não há conteúdo, mostrar um aviso.
 
 1/12:
 
