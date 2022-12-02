@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -43,13 +44,18 @@ public class DailyInfoButtonComponent {
     public JComponent getComponent() {
 
         SpringLayout panelLayout = new SpringLayout();
+        JFrame frame = new JFrame();
         JPanel panel = new JPanel(panelLayout);
+        JScrollPane scrollPane = new JScrollPane(panel);
+
+
+        //JPanel panel = new JPanel(panelLayout);
 
         JComponent resumeComponent = new JLabel(language.getText("dailyInfo.resume"));
 
         panel.add(resumeComponent);
-        panelLayout.putConstraint(SpringLayout.WEST, resumeComponent, 5, SpringLayout.WEST, panel);
-        panelLayout.putConstraint(SpringLayout.NORTH, resumeComponent, 5, SpringLayout.NORTH, panel);
+        panelLayout.putConstraint(SpringLayout.WEST, resumeComponent, 5, SpringLayout.WEST, scrollPane);
+        panelLayout.putConstraint(SpringLayout.NORTH, resumeComponent, 5, SpringLayout.NORTH, scrollPane);
 
         addTodayTasks();
 
@@ -57,23 +63,29 @@ public class DailyInfoButtonComponent {
         if(todayTasks.isEmpty()){
             JComponent temp = new JLabel(language.getText("dailyInfo.empty"));
             panel.add(temp);
-            panelLayout.putConstraint(SpringLayout.WEST, temp, SPACE, SpringLayout.WEST, panel);
+            panelLayout.putConstraint(SpringLayout.WEST, temp, SPACE, SpringLayout.WEST, scrollPane);
             panelLayout.putConstraint(SpringLayout.SOUTH, temp, SPACE, SpringLayout.NORTH, resumeComponent);
         }
         else
             while (it.hasNext()) {
                 //String str = it.next().toString();
                 Task task = (Task) it.next();
-                String str = task.getName();
+                Long time = task.getEnd().getTime().getTime() - (new Date()).getTime();
+                Long days = TimeUnit.MILLISECONDS.toDays(time);
+                String str = "Nome da tarefa: " + task.getName() + " | Dias restantes: " + days.toString() ;
                 JComponent temp = new JLabel("- " + str);
                 panel.add(temp);
-                panelLayout.putConstraint(SpringLayout.WEST, temp, 50, SpringLayout.WEST, panel);
+                panelLayout.putConstraint(SpringLayout.WEST, temp, 50, SpringLayout.WEST, scrollPane);
                 panelLayout.putConstraint(SpringLayout.SOUTH, temp, SPACE, SpringLayout.NORTH, resumeComponent);
                 SPACE = SPACE + 30;
             }
 
-        taskPanel.add(panel);
-
+        taskPanel.add(scrollPane);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setBounds(50, 30, 300, 50);
+        scrollPane.setPreferredSize(new Dimension(500, 400));
+        //panel.add(scrollPane);
         return taskPanel;
     }
 
