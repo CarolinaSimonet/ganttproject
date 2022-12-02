@@ -287,9 +287,10 @@ public class GanttTaskPropertiesBean extends JPanel {
     SpringUtilities.makeCompactGrid(generalPanel, 1, 2, 1, 1, 10, 5);
   }
 
-  private void constructConstraint(Container propertiesPanel) {   //added
+  //construct inside the task properties general tab
+  private void constructConstraint(Container propertiesPanel) {
 
-    /*-----------------------------------alterar-----------------------------*/
+    /*-----------------------------------adds a line to choose the constraint-----------------------------*/
     propertiesPanel.add(new JLabel(language.getText("tableColConstraint")));
     constraintComboBox = new JComboBox();
 
@@ -299,15 +300,16 @@ public class GanttTaskPropertiesBean extends JPanel {
 
     constraintComboBox.setEditable(false);
     propertiesPanel.add(constraintComboBox);
-    /*-----------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------------------------------------------*/
 
-
+    /*-----------------------------------adds a line to choose the constraint date-----------------------------*/
     myConstraintDatePicker = UIUtil.createDatePicker();
     Box valueBox = Box.createHorizontalBox();
     valueBox.add(myConstraintDatePicker);
     valueBox.add(Box.createHorizontalStrut(5));
     propertiesPanel.add(new JLabel(language.getText("tableColConstraintDate")));
     propertiesPanel.add(valueBox);
+    /*----------------------------------------------------------------------------------------------------------*/
   }
 
 
@@ -498,6 +500,9 @@ public class GanttTaskPropertiesBean extends JPanel {
     }
   }
 
+  /**
+   * to setup the chosen constraint date
+   */
   private void setupConstraintDate() {  //added
     DateValidator validator = UIUtil.DateValidator.Default.aroundProjectStart(myProject.getTaskManager().getProjectStart());
     ActionListener listener = new ActionListener() {
