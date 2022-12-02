@@ -49,7 +49,7 @@ public class GanttCalendar extends java.util.GregorianCalendar {
     myLocaleApi = localeApi;
   }
 
-  GanttCalendar(Date date, CalendarFactory.LocaleApi localeApi) {
+  public GanttCalendar(Date date, CalendarFactory.LocaleApi localeApi) {
     super();
     myLocaleApi = localeApi;
     setTime(date);

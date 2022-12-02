@@ -19,7 +19,7 @@ public class DailyInfoButtonComponent {
     private static final GanttLanguage language = GanttLanguage.getInstance();
 
     private Box taskPanel;
-    private final TaskManager myTaskManager;
+    public final TaskManager myTaskManager;
 
     private final Task[] allTasks;
 
@@ -77,7 +77,17 @@ public class DailyInfoButtonComponent {
         return taskPanel;
     }
 
-    private void addTodayTasks() {
+
+    public ArrayList<Task> getTodayTasks() {
+        return todayTasks;
+    }
+
+    public ArrayList<Task> getAllTasksList() {
+        return allTasksList;
+    }
+
+
+    public void addTodayTasks() {
         Iterator<Task> allTasks = allTasksList.iterator();
         while(allTasks.hasNext()){
             Task task = allTasks.next();
@@ -86,7 +96,7 @@ public class DailyInfoButtonComponent {
         }
     }
 
-    private boolean isToday(Task task) {
+    public boolean isToday(Task task) {
         Date today =  new Date();
         Date taskStart = task.getStart().getTime();
         Date taskEnd = task.getEnd().getTime();
