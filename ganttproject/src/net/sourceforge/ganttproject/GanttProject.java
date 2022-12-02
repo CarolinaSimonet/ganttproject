@@ -53,7 +53,7 @@ import net.sourceforge.ganttproject.document.Document;
 import net.sourceforge.ganttproject.document.Document.DocumentException;
 import net.sourceforge.ganttproject.document.DocumentCreator;
 // alterado
-import net.sourceforge.ganttproject.action.TestButton;
+import net.sourceforge.ganttproject.action.DailyInfoButton;
 import net.sourceforge.ganttproject.export.CommandLineExportApplication;
 import net.sourceforge.ganttproject.gui.NotificationManager;
 import net.sourceforge.ganttproject.gui.ProjectMRUMenu;
@@ -134,7 +134,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
   private final EditMenu myEditMenu;
 
   // alterado
-  private final TestButton testButton;
+  private final DailyInfoButton dailyInfoButton;
 
   private final ProjectMenu myProjectMenu;
 
@@ -198,7 +198,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     ToolTipManager.sharedInstance().setInitialDelay(200);
     ToolTipManager.sharedInstance().setDismissDelay(60000);
     // alterado
-    testButton = new TestButton(getProject(), getUIFacade());
+    dailyInfoButton = new DailyInfoButton(getProject(), getUIFacade());
 
     myCalendar.addListener(new GPCalendarListener() {
       @Override
@@ -688,7 +688,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
         .addButton(new TestGanttRolloverButton(myEditMenu.getRedoAction().asToolbarAction()))
         // alterado a partir daqui
         .addWhitespace()
-        .addButton(testButton);
+        .addButton(dailyInfoButton);
 
     JTextField searchBox = getSearchUi().getSearchField();
     //searchBox.setMaximumSize(new Dimension(searchBox.getPreferredSize().width, buttons.get(0).getPreferredSize().height));
@@ -1308,7 +1308,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   @Override
   public void refresh() {
-    testButton.updateProject(getProject());
+    dailyInfoButton.updateProject(getProject());
     getTaskManager().processCriticalPath(getTaskManager().getRootTask());
     getResourcePanel().getResourceTreeTableModel().updateResources();
     getResourcePanel().getResourceTreeTable().setRowHeight(getResourceChart().getModel().calculateRowHeight());
