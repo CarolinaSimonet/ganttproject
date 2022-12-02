@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 
+/**
+ *
+ */
 public class DailyInfoButtonComponent {
 
     private static final GanttLanguage language = GanttLanguage.getInstance();
