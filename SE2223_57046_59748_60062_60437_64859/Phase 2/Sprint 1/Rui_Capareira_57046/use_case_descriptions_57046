@@ -9,5 +9,6 @@ Pre-conditions:
 2. The project has at least one task         
 Main flow: 
 1. The use case starts when the project manager selects a task and then selects the task properties button.
-2. A dialog with the correspondent task properties popup.                                       Alternative flows:
+2. A dialog with the correspondent task properties popup.                                       
+Alternative flows: None
 Post-conditions: The properties dialog box is displayed.
