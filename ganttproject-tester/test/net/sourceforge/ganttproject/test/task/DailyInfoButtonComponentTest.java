@@ -42,7 +42,6 @@ public class DailyInfoButtonComponentTest extends TaskTestCase {
         if(button.isToday(t3)){
             todayTasks.add(t3);
         }
-
         assertTrue(todayTasks.contains(t2));
         assertFalse(todayTasks.contains(t3));
     }
@@ -83,11 +82,8 @@ public class DailyInfoButtonComponentTest extends TaskTestCase {
         if(button.isToday(t3)){
             todayTasks.add(t3);
         }
-
         assertTrue(todayTasks.contains(t2));
         assertFalse(todayTasks.contains(t3));
-
-
     }
 
     public static interface LocaleApi {
@@ -115,7 +111,6 @@ public class DailyInfoButtonComponentTest extends TaskTestCase {
 
         assertTrue(button.isToday(t2));
         assertFalse(button.isToday(t3));
-
 
     }
 }

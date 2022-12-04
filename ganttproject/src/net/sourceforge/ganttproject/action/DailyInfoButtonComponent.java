@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 /**
- *
+ * Adds the content to the daily information button
  */
 public class DailyInfoButtonComponent {
 
@@ -36,7 +36,7 @@ public class DailyInfoButtonComponent {
         myTaskManager = taskManager;
         allTasks = myTaskManager.getTasks();
 
-        //tansform the array into an arraylist
+        //transform the array into an arraylist
         allTasksList = new ArrayList<Task>(Arrays.asList(allTasks));
         todayTasks = new ArrayList<Task>();
     }
@@ -47,9 +47,6 @@ public class DailyInfoButtonComponent {
         JFrame frame = new JFrame();
         JPanel panel = new JPanel(panelLayout);
         JScrollPane scrollPane = new JScrollPane(panel);
-
-
-        //JPanel panel = new JPanel(panelLayout);
 
         JComponent resumeComponent = new JLabel(language.getText("dailyInfo.resume"));
 
@@ -68,7 +65,6 @@ public class DailyInfoButtonComponent {
         }
         else
             while (it.hasNext()) {
-                //String str = it.next().toString();
                 Task task = (Task) it.next();
                 Long time = task.getEnd().getTime().getTime() - (new Date()).getTime();
                 Long days = TimeUnit.MILLISECONDS.toDays(time);
@@ -85,7 +81,6 @@ public class DailyInfoButtonComponent {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setBounds(50, 30, 300, 50);
         scrollPane.setPreferredSize(new Dimension(500, 400));
-        //panel.add(scrollPane);
         return taskPanel;
     }
 
@@ -119,8 +114,4 @@ public class DailyInfoButtonComponent {
         return false;
     }
 
-    private static void addEmptyRow(JPanel form) {
-        form.add(Box.createRigidArea(new Dimension(1, 10)));
-        form.add(Box.createRigidArea(new Dimension(1, 10)));
-    }
 }
