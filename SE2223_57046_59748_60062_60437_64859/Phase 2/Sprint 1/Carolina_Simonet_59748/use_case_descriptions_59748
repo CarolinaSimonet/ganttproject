@@ -1,5 +1,20 @@
-Name: CloseDailyInformation
-Id: 4
+Name: ShowsDailyInformation
+Id: 1
+Description: The system displays information about the tasks of the current day
+Actors:
+Main: Project manager
+Secondary: None
+Pre-conditions: The system has tasks
+Main flow:
+1. The use case begins when the project manager selects “Show daily information”.
+2. The system displays a text box with the active subtasks for the current day.
+2.1. The information displayed by the summary is the total duration, the start day and the finish day of each subtask.
+Alternative flows: ADayWithNoTasks
+Post-conditions: A text box with the daily information was showed.
+
+
+Name: CloseDailyInformation 
+Id: 2
 Description: The system closes the text box with the daily information
 Actors: 
 Main: Project manager
@@ -10,3 +25,18 @@ Main flow:
 2.    The system displays hides/ closes a text box with the active subtasks for the current day
 Alternative flows: None.
 Post-conditions: A text box with the daily information was hided.
+
+
+Name: ADayWithNoTasks
+Id: 3
+Description:  Daily button dialog without tasks
+Actors:
+Main: Project Manager
+Secondary: None
+Pre-conditions: Zero tasks to be done that day
+Main flow: 
+1. The use case starts when the project manager selects the “Show daily information button”. 
+2. The system displays a text box with a message that says “No tasks for today”. 
+Alternative flows: None
+Post-conditions: A text box with a message is displayed.
+
