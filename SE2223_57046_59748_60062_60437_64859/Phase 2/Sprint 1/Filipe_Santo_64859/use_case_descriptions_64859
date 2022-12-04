@@ -1,12 +1,14 @@
-Name: VerticalLine
-Id: 5
+Id: 4
 Description: The system displays a vertical line of the current day
 Actors: 
-Main: 
+Main: Project Manager
 Secondary: None
 Pre-conditions: None
 Main flow: 
-1. The use case starts when the project manager opens the project
-2.  The system displays a vertical line at the start of the current day.
+1. The use case starts when the project manager selects the “Edit” button.
+2. The project manager selects the daily “Settings” button.
+3. The project manager selects the “Gantt Chart” button.
+4. The project manager selects the “Yes” option in “Show today as a red line”.
+5. The system displays a vertical line at the current day.
 Alternative flows: None
-Post-conditions: A vertical line displayed
+Post-conditions: A vertical line displayed.
