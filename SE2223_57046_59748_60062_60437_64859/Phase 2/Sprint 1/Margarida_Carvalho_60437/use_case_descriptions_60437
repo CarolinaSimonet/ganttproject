@@ -1,6 +1,6 @@
 Name: ShowCriticalPath
-Id: 1
-Description: Checks the project’s critical path at any point of the project
+Id: 6
+Description: Checks the project’s critical path at any stage of the project
 Actors: 
     Main: Project Manager
     Secondary: None
@@ -13,8 +13,8 @@ Alternative flows: None
 Post-conditions: The project’s critical path is now displayed.
 
 Name: HideCriticalPath
-Id: 2
-Description: Checks the project’s critical path at any point of the project
+Id: 7
+Description: Checks the project’s critical path at any stage of the project
 Actors: 
     Main: Project Manager
     Secondary: None
